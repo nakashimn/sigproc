@@ -6,7 +6,6 @@
 #   @date 2018.11.27
 #   @version 0.1
 
-import sys
 import pandas
 import numpy as np
 
