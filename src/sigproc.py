@@ -45,7 +45,6 @@ def _cast_ndarray(input):
 ## 型変換(DataFrame型)
 # @param input 入力信号
 # @return output_df 出力信号(DataFrame型)
-
 ---------------------------------------------------------------------------- """
 def _cast_dataframe(input):
     try:
@@ -207,7 +206,7 @@ def calc_corrcoef(data_meas, data_ref, invalid_values=[], delay=np.nan):
 # @param delay 遅延
 # @return mean_error 平均誤差
 ---------------------------------------------------------------------------- """
-def calc_mean_error(data_meas, data_ref, invalid_values=[]):
+def calc_mean_error(data_meas, data_ref, invalid_values=[], delay=np.nan):
     try:
         _data_meas, _data_ref = align(data_meas, data_ref, invalid_values, delay)
         mean_error = np.nanmean(_data_meas - _data_ref)
@@ -224,7 +223,7 @@ def calc_mean_error(data_meas, data_ref, invalid_values=[]):
 # @param delay 遅延
 # @return mean_abs_error 平均絶対誤差
 ---------------------------------------------------------------------------- """
-def calc_mean_abs_error(data_meas, data_ref, invalid_values=[]):
+def calc_mean_abs_error(data_meas, data_ref, invalid_values=[], delay=np.nan):
     try:
         _data_meas, _data_ref = align(data_meas, data_ref, invalid_values, delay)
         mean_abs_error = np.nanmean(abs(_data_meas - _data_ref))
@@ -241,7 +240,7 @@ def calc_mean_abs_error(data_meas, data_ref, invalid_values=[]):
 # @param delay 遅延
 # @return mean_sq_error 平均二乗誤差
 ---------------------------------------------------------------------------- """
-def calc_mean_sq_error(data_meas, data_ref, invalid_values=[]):
+def calc_mean_sq_error(data_meas, data_ref, invalid_values=[], delay=np.nan):
     try:
         _data_meas, _data_ref = align(data_meas, data_ref, invalid_values, delay)
         mean_sq_error = np.nanmean((_data_meas - _data_ref)**2)
@@ -258,7 +257,7 @@ def calc_mean_sq_error(data_meas, data_ref, invalid_values=[]):
 # @param delay 遅延
 # @return root_mean_sq_error 平均平方二乗誤差
 ---------------------------------------------------------------------------- """
-def calc_root_mean_sq_error(data_meas, data_ref, invalid_values=[]):
+def calc_root_mean_sq_error(data_meas, data_ref, invalid_values=[], delay=np.nan):
     try:
         _data_meas, _data_ref = align(data_meas, data_ref, invalid_values, delay)
         root_mean_sq_error = np.sqrt(np.nanmean((_data_meas - _data_ref)**2))
