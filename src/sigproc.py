@@ -41,6 +41,7 @@ def _cast_ndarray(input):
         print("Error:sigproc._cast_ndarray : {}".format(e.args[0]))
         return np.nan
 
+
 """ ----------------------------------------------------------------------------
 ## 型変換(DataFrame型)
 # @param input 入力信号
@@ -73,6 +74,7 @@ def _cast_dataframe(input):
         print("Error:sigproc._cast_dataframe : {}".format(e.args[0]))
         return np.nan
 
+
 """ ----------------------------------------------------------------------------
 ## 区間平均
 # @param input 入力信号
@@ -91,6 +93,48 @@ def calc_section_average(input, window, ofset=0):
     except Exception as e:
         print("Error:sigproc.calc_section_average : {}".format(e.args[0]))
         return np.nan
+
+
+""" ----------------------------------------------------------------------------
+## 区間標準偏差
+# @param input 入力信号
+# @param window 窓区間幅
+# @param ofset =0 オフセット
+# @return section_std_dev 区間標準偏差(ndarray型)
+---------------------------------------------------------------------------- """
+def calc_section_std_dev(input, window, ofset=0):
+    try:
+        _signal = _cast_ndarray(input)
+        _signal = np.delete(_signal,range(ofset))
+        _signal = np.append(_signal,[np.nan]*(window-len(_signal)%window))
+        _signal = _signal.reshape(int(len(_signal)/window),window)
+        section_std_dev = np.nanstd(_signal,axis=1)
+        return section_std_dev
+    except Exception as e:
+        print("Error:sigproc.calc_section_std_dev : {}".format(e.args[0]))
+        return np.nan
+
+
+""" ----------------------------------------------------------------------------
+## 区間最頻値
+# @param input 入力信号
+# @param window 窓区間幅
+# @param ofset =0 オフセット
+# @return section_mode 区間最頻値(ndarray型)
+---------------------------------------------------------------------------- """
+def calc_section_mode(input, window, ofset=0):
+    try:
+        _signal = _cast_ndarray(input)
+        _signal = np.delete(_signal,range(ofset))
+        _signal = np.append(_signal,[np.nan]*(window-len(_signal)%window))
+        _signal = _signal.reshape(int(len(_signal)/window),window)
+        _signal_df = _cast_dataframe(_signal)
+        section_mode = _signal_df.dropna().mode(axis=1)[0].values
+        return section_mode
+    except Exception as e:
+        print("Error:sigproc.calc_section_mode : {}".format(e.args[0]))
+        return np.nan
+
 
 """ ----------------------------------------------------------------------------
 ## 無効値補間
@@ -111,6 +155,7 @@ def interpolate_invalid(input, invalid_values=[]):
         print("Error:sigproc.interpolate_invalid : {}".format(e.args[0]))
         return np.nan
 
+
 """ ----------------------------------------------------------------------------
 ## 相関関数算出
 # @param data_meas 測定信号
@@ -129,6 +174,7 @@ def calc_corrfunc(data_meas, data_ref, invalid_values=[]):
     except Exception as e:
         print("Error:sigproc.calc_coeffunc : {}".format(e.args[0]))
         return np.nan
+
 
 """ ----------------------------------------------------------------------------
 ## 遅延算出
@@ -151,6 +197,7 @@ def calc_delay(data_meas, data_ref, invalid_values=[]):
     except Exception as e:
         print("Error:sigproc.calc_delay : {}".format(e.args[0]))
         return np.nan
+
 
 """ ----------------------------------------------------------------------------
 ## 測定信号-参照信号間の遅延補正とデータ長の統一
@@ -181,6 +228,7 @@ def align(data_meas, data_ref, invalid_values=[], delay=np.nan):
         print("Error:sigproc.align : {}".format(e.args[0]))
         return np.nan
 
+
 """ ----------------------------------------------------------------------------
 ## 相関係数算出
 # @param data_meas 測定信号
@@ -197,6 +245,7 @@ def calc_corrcoef(data_meas, data_ref, invalid_values=[], delay=np.nan):
     except Exception as e:
         print("Error:sigproc.calc_corrcoef : {}".format(e.args[0]))
         return np.nan
+
 
 """ ----------------------------------------------------------------------------
 ## 平均誤差(ME)算出
@@ -215,6 +264,7 @@ def calc_mean_error(data_meas, data_ref, invalid_values=[], delay=np.nan):
         print("Error:sigproc.calc_mean_error : {}".format(e.args[0]))
         return np.nan
 
+
 """ ----------------------------------------------------------------------------
 ## 平均絶対誤差(MAE)算出
 # @param data_meas 測定信号
@@ -232,6 +282,7 @@ def calc_mean_abs_error(data_meas, data_ref, invalid_values=[], delay=np.nan):
         print("Error:sigproc.calc_mean_abs_error : {}".format(e.args[0]))
         return np.nan
 
+
 """ ----------------------------------------------------------------------------
 ## 平均二乗誤差(RSE)算出
 # @param data_meas 測定信号
@@ -248,6 +299,7 @@ def calc_mean_sq_error(data_meas, data_ref, invalid_values=[], delay=np.nan):
     except Exception as e:
         print("Error:sigproc.calc_mean_sq_error : {}".format(e.args[0]))
         return np.nan
+
 
 """ ----------------------------------------------------------------------------
 ## 平均平方二乗誤差(RMSE)算出
