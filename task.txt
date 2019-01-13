@@ -159,7 +159,7 @@
 
 〇 FaceProjectSDK 評価時のコードと最新revのコード比較 8:45 8:54
 〇 FaceProjectSDK 評価時のコードの必要箇所を最新revにmerge
-〇 GD_Process テスト動画(movie_0)による動作確認 8:54 
+〇 GD_Process テスト動画(movie_0)による動作確認 8:54
 〇   FaceProjectSDK 評価時のコードをビルド
 〇   FaceProjectSDK GD修正版のコードをビルド
 〇   FaceProjectSDK 評価時のiniファイルを確認 9:02 9:05
@@ -186,12 +186,12 @@ GD_Process 評価手順書き出し 9:51 9:59
                           11:03 11:09
 
 GD_Process Pythonコードに同じ顔特徴点を入力した場合の出力取得
-〇   GD_Process c++版 movie_0を入力 → fPtsを出力  
+〇   GD_Process c++版 movie_0を入力 → fPtsを出力
 〇   GD_Process c++版 movie_2を入力 → fPtsを出力 11:09 11:21
 〇   GD_Process python版 location出力機能追加 11:28 11:33
 〇   GD_Process c++版 location出力機能追加 11:33 11:41
 〇   GD_Process c++版 movie_0を入力 → fPts, location, feature, deltaを出力 11:41 11:52
-〇   GD_Process c++版 movie_2を入力 → fPts, location, feature, deltaを出力 
+〇   GD_Process c++版 movie_2を入力 → fPts, location, feature, deltaを出力
 〇   GD_Process c++版 movie_0 location出力の正規化 12:45 13:10
   GD_Process python版 movie_0 顔特徴点入力 → 各フレームでの入力画像 一致確認
   GD_Process 顔特徴点入力 → 各フレームでの入力画像 一致データの資料作成
@@ -206,7 +206,7 @@ GD_Process Pythonコードに同じ顔特徴点を入力した場合の出力取
   GD_Process  不一致確認
   GD_Process  不一致データの資料作成
 
-GD_Process 処理フロー見直し 14:48 
+GD_Process 処理フロー見直し 14:48
 GD_Process 処理フロー図示 14:03 14:30 14:35 14:48
 
 〇 GazeDetector コードレビュー 15:00 16:20
@@ -214,9 +214,11 @@ GD_Process 処理フロー図示 14:03 14:30 14:35 14:48
 〇 GazeDetector最新revMerge
 〇 GazeDetector修正後Versionコミット      16:58
 GazeDetector レビュー箇所修正
-  GazeDetectorコントラスト修正実装 16:58 17:08
-  GazeDetectorコントラスト修正追記Versionコミット
 
+GazeDetector(python版)の前処理方法確認
+GazeDetector前処理追加実装
+GazeDetector出力確認
+GazeDetector前処理追加Versionコミット
 FaceProjectSDKの最新revを長岡京PCにチェックアウト
 FaceProjectSDKの最新revを長岡京PCでビルド
 長岡京PCのFaceProjectSDKでsub113_15fpsを解析・ログ出力
@@ -281,7 +283,8 @@ Gaze実装 関数名選定
 Gaze実装 関数作成
 Gaze実装 入出力実装
 Gaze実装 内部処理実装
-Gaze表示実装 
+Gaze表示実装
+
 
 ログ蓄積システム 顔検知成功率算出機能追加
 ログ蓄積システム viewer要件定義(私見でよい)
@@ -294,35 +297,36 @@ Gaze表示実装
 ログ蓄積システム 分析手法案出し(私見でよい)
 ログ蓄積システム 実装手順作成
 
+
 評価用社員動画のHDDを借りる
 ffmpegを西門真PCにダウンロード
 評価用社員動画を西門真PCにダウンロード
 ffmpegで評価用社員動画を15fpsに変換(低画質)
-低画質+Gaze 評価用社員動画(低画質)をサーバーにアップロード
-低画質+Gaze 評価用社員動画(低画質)を長岡京PCにダウンロード
+低画質+Gaze 評価用社員動画(低画質)をサーバーにアップロード(待ち)
+低画質+Gaze 評価用社員動画(低画質)を長岡京PCにダウンロード(待ち)
 低画質+Gaze FaceDetectorSDK最新revを長岡京PCにチェックアウト
 低画質+Gaze FaceDetectorSDK最新revを長岡京PCでビルド
-低画質+Gaze 実験用バッチファイル作成
-低画質+Gaze 実験用バッチファイル iniファイルの削除
-低画質+Gaze 実験用バッチファイル iniファイルテンプレートのファイル名書き換え
-低画質+Gaze 実験用バッチファイル iniファイルの作成
-低画質+Gaze 実験用バッチファイル 作業ディレクトリの移動
-低画質+Gaze 実験用バッチファイル FaceProject起動
-低画質+Gaze gd.iniのEnableを1に修正
-低画質+Gaze 実験用バッチファイル起動(待ち)
+低画質+Gaze fpwa.ini 入力ディレクトリ修正
+低画質+Gaze fpwa.ini 入力ファイル修正
+低画質+Gaze fpwa.ini 出力ディレクトリ修正
+低画質+Gaze fpwa.ini NoWait=1に修正
+低画質+Gaze fpwa.ini FacePoint=1に修正
+低画質+Gaze fpwa.ini EyePoint=1に修正
+低画質+Gaze gd.ini Enable=1に修正
 出力ログをサーバーにアップロード
 アップロードの報告
+
 
 ffmpegで評価用社員動画を15fpsに変換(高画質)
 評価用社員動画(高画質)をサーバーにアップロード
 評価用社員動画(高画質)を長岡京PCにダウンロード
-高画質+NoGaze 実験用バッチファイル作成
-高画質+NoGaze 実験用バッチファイル iniファイルの削除
-高画質+NoGaze 実験用バッチファイル iniファイルテンプレートのファイル名書き換え
-高画質+NoGaze 実験用バッチファイル iniファイルの作成
-高画質+NoGaze 実験用バッチファイル 作業ディレクトリの移動
-高画質+NoGaze 実験用バッチファイル FaceProject起動
-高画質+NoGaze gd.iniのEnableを0に修正
+高画質+NoGaze fpwa.ini 入力ディレクトリ修正
+高画質+NoGaze fpwa.ini 入力ファイル修正
+高画質+NoGaze fpwa.ini 出力ディレクトリ修正
+高画質+NoGaze fpwa.ini NoWait=1に修正
+高画質+NoGaze fpwa.ini FacePoint=1に修正
+高画質+NoGaze fpwa.ini EyePoint=1に修正
+高画質+NoGaze gd.ini Enable=1に修正
 高画質+NoGaze 実験用バッチファイル起動(待ち)
 出力ログをサーバーにアップロード
 アップロードの報告
@@ -331,9 +335,4 @@ py2exeによるexe化テスト(hello world)
 バッチ処理用exeファイルの作成テスト(command_line入出力確認)
 
 
-〇 砂川さんにデータ、解析用PCを借りる旨連絡　9:34 9:44
-〇 出張連絡(火-木) 9:44 9:50
-
 職懇　トランプ大会？
-
-〇 眉毛隠れ問題の対策結果確認 16:27 16:28
