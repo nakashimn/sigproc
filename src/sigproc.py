@@ -66,7 +66,7 @@ def _cast_dataframe(input):
         elif type(input) == pandas.core.frame.DataFrame:
             output_df = input.copy()
         elif type(input) == pandas.core.series.Series:
-            output_df = input.copy()
+            output_df = pandas.DataFrame(input)
         else:
             output_df = pandas.DataFrame(input)
             print("input : data type is wrong.")
