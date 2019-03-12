@@ -249,8 +249,9 @@ def align(data_meas, data_ref, invalid_values=[], delay=np.nan):
             _data_meas = pandas.concat([pandas.DataFrame([np.nan]*_delay, columns=["meas"]), _data_meas]).reset_index(drop=True)
         elif _delay < 0:
             _data_meas = _data_meas.drop(range(abs(_delay))).reset_index(drop=True)
-        aligned_meas = _data_meas["meas"].values
-        aligned_ref = _data_ref["ref"].values
+        _data_aligned = pandas.concat([_data_meas["meas"], _data_ref["ref"]], axis=1)
+        aligned_meas = _data_aligned["meas"]
+        aligned_ref = _data_aligned["ref"]
         return aligned_meas, aligned_ref
     except Exception as e:
         print("Error:sigproc.align : {}".format(e.args[0]))
@@ -267,11 +268,11 @@ def calc_corrcoef(data_meas, data_ref, invalid_values=[], delay=np.nan):
     # @return corrcoef 相関係数
     ----------------------------------------------------------------------- """
     try:
-        _data_meas, _data_ref = align(data_meas,
-                                      data_ref,
-                                      invalid_values,
-                                      delay)
-        corrcoef = np.corrcoef(_data_meas, _data_ref)[0][1]
+        _data_aligned = pandas.concat(align(data_meas,
+                                            data_ref,
+                                            invalid_values,
+                                            delay), axis=1).dropna()
+        corrcoef = np.corrcoef(_data_aligned["meas"], _data_aligned["ref"])[0][1]
         return corrcoef
     except Exception as e:
         print("Error:sigproc.calc_corrcoef : {}".format(e.args[0]))
@@ -341,10 +342,7 @@ def calc_mean_sq_error(data_meas, data_ref, invalid_values=[], delay=np.nan):
         return np.nan
 
 
-def calc_root_mean_sq_error(data_meas,
-                            data_ref,
-                            invalid_values=[],
-                            delay=np.nan):
+def calc_root_mean_sq_error(data_meas, data_ref, invalid_values=[], delay=np.nan):
     """ -----------------------------------------------------------------------
     ## 平均平方二乗誤差(RMSE)算出
     # @param data_meas 測定信号
@@ -363,3 +361,25 @@ def calc_root_mean_sq_error(data_meas,
     except Exception as e:
         print("Error:sigproc.calc_root_mean_sq_error : {}".format(e.args[0]))
         return np.nan
+
+
+def calc_accuracy(data_meas, data_ref, threshold, invalid_values=[], delay=np.nan):
+    """ -----------------------------------------------------------------------
+    ## 正答率算出(絶対誤差が閾値以内に収まる割合)
+    # @param data_meas 測定信号
+    # @param data_ref 参照信号
+    # @param threshold 閾値
+    # @param invalid_values 無効値
+    # @param delay 遅延
+    # @return accuracy 正答率
+    ----------------------------------------------------------------------- """
+    try:
+        _data_aligned = pandas.concat(align(data_meas,
+                                            data_ref,
+                                            invalid_values,
+                                            delay), axis=1).dropna()
+        _data_abs_error = np.abs(_data_aligned["meas"].values - _data_aligned["ref"].values)
+        accuracy = sum(_data_abs_error <= threshold) / len(_data_abs_error)
+        return accuracy
+    except Exception as e:
+        print("Error:sigproc.calc_accuracy : {}".format(e.args[0]))
