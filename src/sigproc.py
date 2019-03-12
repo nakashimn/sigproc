@@ -31,9 +31,9 @@ def _cast_ndarray(input):
         elif type(input) == np.ndarray:
             output_nd = input.copy()
         elif type(input) == pandas.core.frame.DataFrame:
-            output_nd = input.values.copy()
+            output_nd = input.values.ravel().copy()
         elif type(input) == pandas.core.series.Series:
-            output_nd = input.values.copy()
+            output_nd = input.values.ravel().copy()
         else:
             output_nd = np.array(input)
             print("input : data type is wrong.")
@@ -163,6 +163,26 @@ def interpolate_invalid(input, invalid_values=[]):
         return np.nan
 
 
+def drop_invalid(input, invalid_values=[]):
+    """ -----------------------------------------------------------------------
+    ## 無効値除外
+    # @param input 入力信号
+    # @param invalid_values 無効値
+    # @return invalidated 無効値除外(np.nan)後信号(ndarray型)
+    ----------------------------------------------------------------------- """
+    try:
+        _signal = _cast_dataframe(input)
+        if type(invalid_values) == int or type(invalid_values) == float:
+            invalid_values = [invalid_values]
+        for invalid_value in invalid_values:
+            _signal[_signal == invalid_value] = np.nan
+        invalidated = _signal
+        return invalidated
+    except Exception as e:
+        print("Error:sigproc.interpolate_invalid : {}".format(e.args[0]))
+        return np.nan
+
+
 def calc_corrfunc(data_meas, data_ref, invalid_values=[]):
     """ -----------------------------------------------------------------------
     ## 相関関数算出
@@ -221,15 +241,16 @@ def align(data_meas, data_ref, invalid_values=[], delay=np.nan):
             _delay = calc_delay(data_meas, data_ref, invalid_values)
         else:
             _delay = delay
-        _data_meas = pandas.DataFrame(data_meas, columns=["meas"]).copy()
-        _data_ref = pandas.DataFrame(data_ref, columns=["ref"]).copy()
+        _data_meas = _cast_dataframe(data_meas)
+        _data_meas.columns = ["meas"]
+        _data_ref = _cast_dataframe(data_ref)
+        _data_ref.columns = ["ref"]
         if _delay > 0:
-            _data_ref = _data_ref.drop(range(_delay)).reset_index(drop=True)
+            _data_meas = pandas.concat([pandas.DataFrame([np.nan]*_delay, columns=["meas"]), _data_meas]).reset_index(drop=True)
         elif _delay < 0:
             _data_meas = _data_meas.drop(range(abs(_delay))).reset_index(drop=True)
-        _data_concat = pandas.concat([_data_meas, _data_ref], 1).dropna()
-        aligned_meas = _data_concat["meas"].values
-        aligned_ref = _data_concat["ref"].values
+        aligned_meas = _data_meas["meas"].values
+        aligned_ref = _data_ref["ref"].values
         return aligned_meas, aligned_ref
     except Exception as e:
         print("Error:sigproc.align : {}".format(e.args[0]))
