@@ -64,9 +64,9 @@ def _cast_dataframe(input):
         elif type(input) == np.ndarray:
             output_df = pandas.DataFrame(input.copy())
         elif type(input) == pandas.core.frame.DataFrame:
-            output_df = input.copy()
+            output_df = pandas.DataFrame(input.values.ravel().copy())
         elif type(input) == pandas.core.series.Series:
-            output_df = pandas.DataFrame(input)
+            output_df = pandas.DataFrame(input.values.ravel().copy())
         else:
             output_df = pandas.DataFrame(input)
             print("input : data type is wrong.")
