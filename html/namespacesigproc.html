@@ -80,13 +80,13 @@ Functions</h2></td></tr>
 <tr class="memdesc:a199c9ba719770091a9dc5165837f8b05"><td class="mdescLeft">&#160;</td><td class="mdescRight">型変換(pd.DataFrame)  <a href="#a199c9ba719770091a9dc5165837f8b05">More...</a><br /></td></tr>
 <tr class="separator:a199c9ba719770091a9dc5165837f8b05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afeae554b1a36fd50e11ba8245e094752"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesigproc.html#afeae554b1a36fd50e11ba8245e094752">calc_section_average</a></td></tr>
-<tr class="memdesc:afeae554b1a36fd50e11ba8245e094752"><td class="mdescLeft">&#160;</td><td class="mdescRight">区間平均  <a href="#afeae554b1a36fd50e11ba8245e094752">More...</a><br /></td></tr>
+<tr class="memdesc:afeae554b1a36fd50e11ba8245e094752"><td class="mdescLeft">&#160;</td><td class="mdescRight">区間平均算出  <a href="#afeae554b1a36fd50e11ba8245e094752">More...</a><br /></td></tr>
 <tr class="separator:afeae554b1a36fd50e11ba8245e094752"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1525734d64ef63af957c1a05d73e5bc6"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesigproc.html#a1525734d64ef63af957c1a05d73e5bc6">calc_section_std_dev</a></td></tr>
-<tr class="memdesc:a1525734d64ef63af957c1a05d73e5bc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">区間標準偏差  <a href="#a1525734d64ef63af957c1a05d73e5bc6">More...</a><br /></td></tr>
+<tr class="memdesc:a1525734d64ef63af957c1a05d73e5bc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">区間標準偏差算出  <a href="#a1525734d64ef63af957c1a05d73e5bc6">More...</a><br /></td></tr>
 <tr class="separator:a1525734d64ef63af957c1a05d73e5bc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0bd424195448e1a103c56799075dd208"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesigproc.html#a0bd424195448e1a103c56799075dd208">calc_section_mode</a></td></tr>
-<tr class="memdesc:a0bd424195448e1a103c56799075dd208"><td class="mdescLeft">&#160;</td><td class="mdescRight">区間最頻値  <a href="#a0bd424195448e1a103c56799075dd208">More...</a><br /></td></tr>
+<tr class="memdesc:a0bd424195448e1a103c56799075dd208"><td class="mdescLeft">&#160;</td><td class="mdescRight">区間最頻値算出  <a href="#a0bd424195448e1a103c56799075dd208">More...</a><br /></td></tr>
 <tr class="separator:a0bd424195448e1a103c56799075dd208"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6491947250bd4503f6c4d75c619ba6ff"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesigproc.html#a6491947250bd4503f6c4d75c619ba6ff">interpolate_invalid</a></td></tr>
 <tr class="memdesc:a6491947250bd4503f6c4d75c619ba6ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">無効値補間  <a href="#a6491947250bd4503f6c4d75c619ba6ff">More...</a><br /></td></tr>
@@ -119,7 +119,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:a34cbfcd3044b5c08fbac9c11760881f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">平均平方二乗誤差(RMSE)算出  <a href="#a34cbfcd3044b5c08fbac9c11760881f7">More...</a><br /></td></tr>
 <tr class="separator:a34cbfcd3044b5c08fbac9c11760881f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad0e26bf1bbb50a1f9b7e116ff476c66"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesigproc.html#aad0e26bf1bbb50a1f9b7e116ff476c66">calc_accuracy</a></td></tr>
-<tr class="memdesc:aad0e26bf1bbb50a1f9b7e116ff476c66"><td class="mdescLeft">&#160;</td><td class="mdescRight">正答率算出(絶対誤差が閾値以内に収まる割合)  <a href="#aad0e26bf1bbb50a1f9b7e116ff476c66">More...</a><br /></td></tr>
+<tr class="memdesc:aad0e26bf1bbb50a1f9b7e116ff476c66"><td class="mdescLeft">&#160;</td><td class="mdescRight">正答率(絶対誤差が閾値以内に収まる割合)算出  <a href="#aad0e26bf1bbb50a1f9b7e116ff476c66">More...</a><br /></td></tr>
 <tr class="separator:aad0e26bf1bbb50a1f9b7e116ff476c66"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -176,6 +176,25 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>output_df 出力信号(pd.DataFrame) </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespacesigproc_a199c9ba719770091a9dc5165837f8b05_icgraph.png" border="0" usemap="#namespacesigproc_a199c9ba719770091a9dc5165837f8b05_icgraph" alt=""/></div>
+<map name="namespacesigproc_a199c9ba719770091a9dc5165837f8b05_icgraph" id="namespacesigproc_a199c9ba719770091a9dc5165837f8b05_icgraph">
+<area shape="rect" id="node2" href="namespacesigproc.html#a0bd424195448e1a103c56799075dd208" title="区間最頻値算出 " alt="" coords="224,56,404,83"/>
+<area shape="rect" id="node3" href="namespacesigproc.html#a6491947250bd4503f6c4d75c619ba6ff" title="無効値補間 " alt="" coords="250,107,378,149"/>
+<area shape="rect" id="node6" href="namespacesigproc.html#a493674a58654e34d6d9257067736eaac" title="測定信号&#45;参照信号間の遅延補正とデータ長の統一 " alt="" coords="645,148,740,175"/>
+<area shape="rect" id="node13" href="namespacesigproc.html#ace562e5b0ee5533abadbe723f980e91e" title="無効値除外 " alt="" coords="247,224,381,251"/>
+<area shape="rect" id="node4" href="namespacesigproc.html#a05163f073c4da5c61ffd0a004d367e80" title="相関関数算出 " alt="" coords="452,72,597,99"/>
+<area shape="rect" id="node5" href="namespacesigproc.html#a0f913c8f0a4b5106a35ebc4dd01716c6" title="遅延算出 " alt="" coords="459,123,590,149"/>
+<area shape="rect" id="node7" href="namespacesigproc.html#aef8763cfb8ca09db00092478741501af" title="相関係数算出 " alt="" coords="797,5,943,32"/>
+<area shape="rect" id="node8" href="namespacesigproc.html#aa30d9c73682d13db7c77c22a36da7872" title="平均誤差(ME)算出 " alt="" coords="788,56,952,83"/>
+<area shape="rect" id="node9" href="namespacesigproc.html#a63e03accfdf1c3806cec3cf3c7280e48" title="平均絶対誤差(MAE)算出 " alt="" coords="791,107,949,149"/>
+<area shape="rect" id="node10" href="namespacesigproc.html#a78251de255e7ae3d8e277d74355c4690" title="平均二乗誤差(RSE)算出 " alt="" coords="794,173,946,214"/>
+<area shape="rect" id="node11" href="namespacesigproc.html#a34cbfcd3044b5c08fbac9c11760881f7" title="平均平方二乗誤差(RMSE)算出 " alt="" coords="790,238,950,279"/>
+<area shape="rect" id="node12" href="namespacesigproc.html#aad0e26bf1bbb50a1f9b7e116ff476c66" title="正答率(絶対誤差が閾値以内に収まる割合)算出 " alt="" coords="794,304,946,331"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -227,6 +246,16 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>output_nd 出力信号(np.ndarray) </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespacesigproc_ab8036c953c178bcec254691c83cc1a6b_icgraph.png" border="0" usemap="#namespacesigproc_ab8036c953c178bcec254691c83cc1a6b_icgraph" alt=""/></div>
+<map name="namespacesigproc_ab8036c953c178bcec254691c83cc1a6b_icgraph" id="namespacesigproc_ab8036c953c178bcec254691c83cc1a6b_icgraph">
+<area shape="rect" id="node2" href="namespacesigproc.html#afeae554b1a36fd50e11ba8245e094752" title="区間平均算出 " alt="" coords="230,5,371,47"/>
+<area shape="rect" id="node3" href="namespacesigproc.html#a1525734d64ef63af957c1a05d73e5bc6" title="区間標準偏差算出 " alt="" coords="230,71,371,112"/>
+<area shape="rect" id="node4" href="namespacesigproc.html#a0bd424195448e1a103c56799075dd208" title="区間最頻値算出 " alt="" coords="211,137,391,163"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -259,6 +288,29 @@ Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>aligned_meas データ長調整後の測定信号(ndarray型) </dd>
 <dd>
 aligned_ref データ長調整後の参照信号(ndarray型) </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespacesigproc_a493674a58654e34d6d9257067736eaac_cgraph.png" border="0" usemap="#namespacesigproc_a493674a58654e34d6d9257067736eaac_cgraph" alt=""/></div>
+<map name="namespacesigproc_a493674a58654e34d6d9257067736eaac_cgraph" id="namespacesigproc_a493674a58654e34d6d9257067736eaac_cgraph">
+<area shape="rect" id="node2" href="namespacesigproc.html#a0f913c8f0a4b5106a35ebc4dd01716c6" title="遅延算出 " alt="" coords="148,17,279,43"/>
+<area shape="rect" id="node4" href="namespacesigproc.html#a199c9ba719770091a9dc5165837f8b05" title="型変換(pd.DataFrame) " alt="" coords="503,42,673,69"/>
+<area shape="rect" id="node3" href="namespacesigproc.html#a6491947250bd4503f6c4d75c619ba6ff" title="無効値補間 " alt="" coords="327,5,455,47"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespacesigproc_a493674a58654e34d6d9257067736eaac_icgraph.png" border="0" usemap="#namespacesigproc_a493674a58654e34d6d9257067736eaac_icgraph" alt=""/></div>
+<map name="namespacesigproc_a493674a58654e34d6d9257067736eaac_icgraph" id="namespacesigproc_a493674a58654e34d6d9257067736eaac_icgraph">
+<area shape="rect" id="node2" href="namespacesigproc.html#aef8763cfb8ca09db00092478741501af" title="相関係数算出 " alt="" coords="157,5,303,32"/>
+<area shape="rect" id="node3" href="namespacesigproc.html#aa30d9c73682d13db7c77c22a36da7872" title="平均誤差(ME)算出 " alt="" coords="148,56,312,83"/>
+<area shape="rect" id="node4" href="namespacesigproc.html#a63e03accfdf1c3806cec3cf3c7280e48" title="平均絶対誤差(MAE)算出 " alt="" coords="151,107,309,149"/>
+<area shape="rect" id="node5" href="namespacesigproc.html#a78251de255e7ae3d8e277d74355c4690" title="平均二乗誤差(RSE)算出 " alt="" coords="154,173,306,214"/>
+<area shape="rect" id="node6" href="namespacesigproc.html#a34cbfcd3044b5c08fbac9c11760881f7" title="平均平方二乗誤差(RMSE)算出 " alt="" coords="150,238,310,279"/>
+<area shape="rect" id="node7" href="namespacesigproc.html#aad0e26bf1bbb50a1f9b7e116ff476c66" title="正答率(絶対誤差が閾値以内に収まる割合)算出 " alt="" coords="154,304,306,331"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -278,7 +330,7 @@ aligned_ref データ長調整後の参照信号(ndarray型) </dd></dl>
       </table>
 </div><div class="memdoc">
 
-<p>正答率算出(絶対誤差が閾値以内に収まる割合) </p>
+<p>正答率(絶対誤差が閾値以内に収まる割合)算出 </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">data_meas</td><td>測定信号 </td></tr>
@@ -290,6 +342,17 @@ aligned_ref データ長調整後の参照信号(ndarray型) </dd></dl>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>accuracy 正答率 </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespacesigproc_aad0e26bf1bbb50a1f9b7e116ff476c66_cgraph.png" border="0" usemap="#namespacesigproc_aad0e26bf1bbb50a1f9b7e116ff476c66_cgraph" alt=""/></div>
+<map name="namespacesigproc_aad0e26bf1bbb50a1f9b7e116ff476c66_cgraph" id="namespacesigproc_aad0e26bf1bbb50a1f9b7e116ff476c66_cgraph">
+<area shape="rect" id="node2" href="namespacesigproc.html#a493674a58654e34d6d9257067736eaac" title="測定信号&#45;参照信号間の遅延補正とデータ長の統一 " alt="" coords="205,45,300,71"/>
+<area shape="rect" id="node3" href="namespacesigproc.html#a0f913c8f0a4b5106a35ebc4dd01716c6" title="遅延算出 " alt="" coords="348,17,479,43"/>
+<area shape="rect" id="node5" href="namespacesigproc.html#a199c9ba719770091a9dc5165837f8b05" title="型変換(pd.DataFrame) " alt="" coords="703,42,873,69"/>
+<area shape="rect" id="node4" href="namespacesigproc.html#a6491947250bd4503f6c4d75c619ba6ff" title="無効値補間 " alt="" coords="527,5,655,47"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -320,6 +383,17 @@ aligned_ref データ長調整後の参照信号(ndarray型) </dd></dl>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>corrcoef 相関係数 </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespacesigproc_aef8763cfb8ca09db00092478741501af_cgraph.png" border="0" usemap="#namespacesigproc_aef8763cfb8ca09db00092478741501af_cgraph" alt=""/></div>
+<map name="namespacesigproc_aef8763cfb8ca09db00092478741501af_cgraph" id="namespacesigproc_aef8763cfb8ca09db00092478741501af_cgraph">
+<area shape="rect" id="node2" href="namespacesigproc.html#a493674a58654e34d6d9257067736eaac" title="測定信号&#45;参照信号間の遅延補正とデータ長の統一 " alt="" coords="199,45,293,71"/>
+<area shape="rect" id="node3" href="namespacesigproc.html#a0f913c8f0a4b5106a35ebc4dd01716c6" title="遅延算出 " alt="" coords="341,17,472,43"/>
+<area shape="rect" id="node5" href="namespacesigproc.html#a199c9ba719770091a9dc5165837f8b05" title="型変換(pd.DataFrame) " alt="" coords="696,42,867,69"/>
+<area shape="rect" id="node4" href="namespacesigproc.html#a6491947250bd4503f6c4d75c619ba6ff" title="無効値補間 " alt="" coords="520,5,648,47"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -349,6 +423,15 @@ aligned_ref データ長調整後の参照信号(ndarray型) </dd></dl>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>corrfunc 相関関数 </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespacesigproc_a05163f073c4da5c61ffd0a004d367e80_cgraph.png" border="0" usemap="#namespacesigproc_a05163f073c4da5c61ffd0a004d367e80_cgraph" alt=""/></div>
+<map name="namespacesigproc_a05163f073c4da5c61ffd0a004d367e80_cgraph" id="namespacesigproc_a05163f073c4da5c61ffd0a004d367e80_cgraph">
+<area shape="rect" id="node2" href="namespacesigproc.html#a6491947250bd4503f6c4d75c619ba6ff" title="無効値補間 " alt="" coords="199,5,327,47"/>
+<area shape="rect" id="node3" href="namespacesigproc.html#a199c9ba719770091a9dc5165837f8b05" title="型変換(pd.DataFrame) " alt="" coords="375,13,545,39"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -378,6 +461,29 @@ aligned_ref データ長調整後の参照信号(ndarray型) </dd></dl>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>delay 遅延 _delay&gt;0 : 測定信号のほうが遅い _delay&lt;0 : 測定信号のほうが早い </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespacesigproc_a0f913c8f0a4b5106a35ebc4dd01716c6_cgraph.png" border="0" usemap="#namespacesigproc_a0f913c8f0a4b5106a35ebc4dd01716c6_cgraph" alt=""/></div>
+<map name="namespacesigproc_a0f913c8f0a4b5106a35ebc4dd01716c6_cgraph" id="namespacesigproc_a0f913c8f0a4b5106a35ebc4dd01716c6_cgraph">
+<area shape="rect" id="node2" href="namespacesigproc.html#a6491947250bd4503f6c4d75c619ba6ff" title="無効値補間 " alt="" coords="184,5,312,47"/>
+<area shape="rect" id="node3" href="namespacesigproc.html#a199c9ba719770091a9dc5165837f8b05" title="型変換(pd.DataFrame) " alt="" coords="360,13,531,39"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespacesigproc_a0f913c8f0a4b5106a35ebc4dd01716c6_icgraph.png" border="0" usemap="#namespacesigproc_a0f913c8f0a4b5106a35ebc4dd01716c6_icgraph" alt=""/></div>
+<map name="namespacesigproc_a0f913c8f0a4b5106a35ebc4dd01716c6_icgraph" id="namespacesigproc_a0f913c8f0a4b5106a35ebc4dd01716c6_icgraph">
+<area shape="rect" id="node2" href="namespacesigproc.html#a493674a58654e34d6d9257067736eaac" title="測定信号&#45;参照信号間の遅延補正とデータ長の統一 " alt="" coords="184,148,279,175"/>
+<area shape="rect" id="node3" href="namespacesigproc.html#aef8763cfb8ca09db00092478741501af" title="相関係数算出 " alt="" coords="336,5,481,32"/>
+<area shape="rect" id="node4" href="namespacesigproc.html#aa30d9c73682d13db7c77c22a36da7872" title="平均誤差(ME)算出 " alt="" coords="327,56,491,83"/>
+<area shape="rect" id="node5" href="namespacesigproc.html#a63e03accfdf1c3806cec3cf3c7280e48" title="平均絶対誤差(MAE)算出 " alt="" coords="329,107,488,149"/>
+<area shape="rect" id="node6" href="namespacesigproc.html#a78251de255e7ae3d8e277d74355c4690" title="平均二乗誤差(RSE)算出 " alt="" coords="333,173,485,214"/>
+<area shape="rect" id="node7" href="namespacesigproc.html#a34cbfcd3044b5c08fbac9c11760881f7" title="平均平方二乗誤差(RMSE)算出 " alt="" coords="329,238,489,279"/>
+<area shape="rect" id="node8" href="namespacesigproc.html#aad0e26bf1bbb50a1f9b7e116ff476c66" title="正答率(絶対誤差が閾値以内に収まる割合)算出 " alt="" coords="333,304,485,331"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -408,6 +514,17 @@ aligned_ref データ長調整後の参照信号(ndarray型) </dd></dl>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>mean_abs_error 平均絶対誤差 </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespacesigproc_a63e03accfdf1c3806cec3cf3c7280e48_cgraph.png" border="0" usemap="#namespacesigproc_a63e03accfdf1c3806cec3cf3c7280e48_cgraph" alt=""/></div>
+<map name="namespacesigproc_a63e03accfdf1c3806cec3cf3c7280e48_cgraph" id="namespacesigproc_a63e03accfdf1c3806cec3cf3c7280e48_cgraph">
+<area shape="rect" id="node2" href="namespacesigproc.html#a493674a58654e34d6d9257067736eaac" title="測定信号&#45;参照信号間の遅延補正とデータ長の統一 " alt="" coords="212,45,307,71"/>
+<area shape="rect" id="node3" href="namespacesigproc.html#a0f913c8f0a4b5106a35ebc4dd01716c6" title="遅延算出 " alt="" coords="355,17,485,43"/>
+<area shape="rect" id="node5" href="namespacesigproc.html#a199c9ba719770091a9dc5165837f8b05" title="型変換(pd.DataFrame) " alt="" coords="709,42,880,69"/>
+<area shape="rect" id="node4" href="namespacesigproc.html#a6491947250bd4503f6c4d75c619ba6ff" title="無効値補間 " alt="" coords="533,5,661,47"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -438,6 +555,17 @@ aligned_ref データ長調整後の参照信号(ndarray型) </dd></dl>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>mean_error 平均誤差 </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespacesigproc_aa30d9c73682d13db7c77c22a36da7872_cgraph.png" border="0" usemap="#namespacesigproc_aa30d9c73682d13db7c77c22a36da7872_cgraph" alt=""/></div>
+<map name="namespacesigproc_aa30d9c73682d13db7c77c22a36da7872_cgraph" id="namespacesigproc_aa30d9c73682d13db7c77c22a36da7872_cgraph">
+<area shape="rect" id="node2" href="namespacesigproc.html#a493674a58654e34d6d9257067736eaac" title="測定信号&#45;参照信号間の遅延補正とデータ長の統一 " alt="" coords="217,45,312,71"/>
+<area shape="rect" id="node3" href="namespacesigproc.html#a0f913c8f0a4b5106a35ebc4dd01716c6" title="遅延算出 " alt="" coords="360,17,491,43"/>
+<area shape="rect" id="node5" href="namespacesigproc.html#a199c9ba719770091a9dc5165837f8b05" title="型変換(pd.DataFrame) " alt="" coords="715,42,885,69"/>
+<area shape="rect" id="node4" href="namespacesigproc.html#a6491947250bd4503f6c4d75c619ba6ff" title="無効値補間 " alt="" coords="539,5,667,47"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -468,6 +596,17 @@ aligned_ref データ長調整後の参照信号(ndarray型) </dd></dl>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>mean_sq_error 平均二乗誤差 </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespacesigproc_a78251de255e7ae3d8e277d74355c4690_cgraph.png" border="0" usemap="#namespacesigproc_a78251de255e7ae3d8e277d74355c4690_cgraph" alt=""/></div>
+<map name="namespacesigproc_a78251de255e7ae3d8e277d74355c4690_cgraph" id="namespacesigproc_a78251de255e7ae3d8e277d74355c4690_cgraph">
+<area shape="rect" id="node2" href="namespacesigproc.html#a493674a58654e34d6d9257067736eaac" title="測定信号&#45;参照信号間の遅延補正とデータ長の統一 " alt="" coords="205,45,300,71"/>
+<area shape="rect" id="node3" href="namespacesigproc.html#a0f913c8f0a4b5106a35ebc4dd01716c6" title="遅延算出 " alt="" coords="348,17,479,43"/>
+<area shape="rect" id="node5" href="namespacesigproc.html#a199c9ba719770091a9dc5165837f8b05" title="型変換(pd.DataFrame) " alt="" coords="703,42,873,69"/>
+<area shape="rect" id="node4" href="namespacesigproc.html#a6491947250bd4503f6c4d75c619ba6ff" title="無効値補間 " alt="" coords="527,5,655,47"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -498,6 +637,17 @@ aligned_ref データ長調整後の参照信号(ndarray型) </dd></dl>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>root_mean_sq_error 平均平方二乗誤差 </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespacesigproc_a34cbfcd3044b5c08fbac9c11760881f7_cgraph.png" border="0" usemap="#namespacesigproc_a34cbfcd3044b5c08fbac9c11760881f7_cgraph" alt=""/></div>
+<map name="namespacesigproc_a34cbfcd3044b5c08fbac9c11760881f7_cgraph" id="namespacesigproc_a34cbfcd3044b5c08fbac9c11760881f7_cgraph">
+<area shape="rect" id="node2" href="namespacesigproc.html#a493674a58654e34d6d9257067736eaac" title="測定信号&#45;参照信号間の遅延補正とデータ長の統一 " alt="" coords="213,45,308,71"/>
+<area shape="rect" id="node3" href="namespacesigproc.html#a0f913c8f0a4b5106a35ebc4dd01716c6" title="遅延算出 " alt="" coords="356,17,487,43"/>
+<area shape="rect" id="node5" href="namespacesigproc.html#a199c9ba719770091a9dc5165837f8b05" title="型変換(pd.DataFrame) " alt="" coords="711,42,881,69"/>
+<area shape="rect" id="node4" href="namespacesigproc.html#a6491947250bd4503f6c4d75c619ba6ff" title="無効値補間 " alt="" coords="535,5,663,47"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -517,7 +667,7 @@ aligned_ref データ長調整後の参照信号(ndarray型) </dd></dl>
       </table>
 </div><div class="memdoc">
 
-<p>区間平均 </p>
+<p>区間平均算出 </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">input</td><td>入力信号 </td></tr>
@@ -527,6 +677,14 @@ aligned_ref データ長調整後の参照信号(ndarray型) </dd></dl>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>section_average 区間平均(np.ndarray) </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespacesigproc_afeae554b1a36fd50e11ba8245e094752_cgraph.png" border="0" usemap="#namespacesigproc_afeae554b1a36fd50e11ba8245e094752_cgraph" alt=""/></div>
+<map name="namespacesigproc_afeae554b1a36fd50e11ba8245e094752_cgraph" id="namespacesigproc_afeae554b1a36fd50e11ba8245e094752_cgraph">
+<area shape="rect" id="node2" href="namespacesigproc.html#ab8036c953c178bcec254691c83cc1a6b" title="型変換(np.ndarray) " alt="" coords="195,13,352,39"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -546,7 +704,7 @@ aligned_ref データ長調整後の参照信号(ndarray型) </dd></dl>
       </table>
 </div><div class="memdoc">
 
-<p>区間最頻値 </p>
+<p>区間最頻値算出 </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">input</td><td>入力信号 </td></tr>
@@ -556,6 +714,15 @@ aligned_ref データ長調整後の参照信号(ndarray型) </dd></dl>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>section_mode 区間最頻値(np.ndarray) </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespacesigproc_a0bd424195448e1a103c56799075dd208_cgraph.png" border="0" usemap="#namespacesigproc_a0bd424195448e1a103c56799075dd208_cgraph" alt=""/></div>
+<map name="namespacesigproc_a0bd424195448e1a103c56799075dd208_cgraph" id="namespacesigproc_a0bd424195448e1a103c56799075dd208_cgraph">
+<area shape="rect" id="node2" href="namespacesigproc.html#ab8036c953c178bcec254691c83cc1a6b" title="型変換(np.ndarray) " alt="" coords="240,5,397,32"/>
+<area shape="rect" id="node3" href="namespacesigproc.html#a199c9ba719770091a9dc5165837f8b05" title="型変換(pd.DataFrame) " alt="" coords="233,56,404,83"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -575,7 +742,7 @@ aligned_ref データ長調整後の参照信号(ndarray型) </dd></dl>
       </table>
 </div><div class="memdoc">
 
-<p>区間標準偏差 </p>
+<p>区間標準偏差算出 </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">input</td><td>入力信号 </td></tr>
@@ -585,6 +752,14 @@ aligned_ref データ長調整後の参照信号(ndarray型) </dd></dl>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>section_std_dev 区間標準偏差(np.ndarray) </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespacesigproc_a1525734d64ef63af957c1a05d73e5bc6_cgraph.png" border="0" usemap="#namespacesigproc_a1525734d64ef63af957c1a05d73e5bc6_cgraph" alt=""/></div>
+<map name="namespacesigproc_a1525734d64ef63af957c1a05d73e5bc6_cgraph" id="namespacesigproc_a1525734d64ef63af957c1a05d73e5bc6_cgraph">
+<area shape="rect" id="node2" href="namespacesigproc.html#ab8036c953c178bcec254691c83cc1a6b" title="型変換(np.ndarray) " alt="" coords="195,13,352,39"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -613,6 +788,14 @@ aligned_ref データ長調整後の参照信号(ndarray型) </dd></dl>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>invalidated 無効値除外(np.nan)後信号(np.ndarray) </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespacesigproc_ace562e5b0ee5533abadbe723f980e91e_cgraph.png" border="0" usemap="#namespacesigproc_ace562e5b0ee5533abadbe723f980e91e_cgraph" alt=""/></div>
+<map name="namespacesigproc_ace562e5b0ee5533abadbe723f980e91e_cgraph" id="namespacesigproc_ace562e5b0ee5533abadbe723f980e91e_cgraph">
+<area shape="rect" id="node2" href="namespacesigproc.html#a199c9ba719770091a9dc5165837f8b05" title="型変換(pd.DataFrame) " alt="" coords="188,5,359,32"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -641,6 +824,30 @@ aligned_ref データ長調整後の参照信号(ndarray型) </dd></dl>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>interpolated 無効値補間後信号(np.ndarray) </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespacesigproc_a6491947250bd4503f6c4d75c619ba6ff_cgraph.png" border="0" usemap="#namespacesigproc_a6491947250bd4503f6c4d75c619ba6ff_cgraph" alt=""/></div>
+<map name="namespacesigproc_a6491947250bd4503f6c4d75c619ba6ff_cgraph" id="namespacesigproc_a6491947250bd4503f6c4d75c619ba6ff_cgraph">
+<area shape="rect" id="node2" href="namespacesigproc.html#a199c9ba719770091a9dc5165837f8b05" title="型変換(pd.DataFrame) " alt="" coords="181,13,352,39"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespacesigproc_a6491947250bd4503f6c4d75c619ba6ff_icgraph.png" border="0" usemap="#namespacesigproc_a6491947250bd4503f6c4d75c619ba6ff_icgraph" alt=""/></div>
+<map name="namespacesigproc_a6491947250bd4503f6c4d75c619ba6ff_icgraph" id="namespacesigproc_a6491947250bd4503f6c4d75c619ba6ff_icgraph">
+<area shape="rect" id="node2" href="namespacesigproc.html#a05163f073c4da5c61ffd0a004d367e80" title="相関関数算出 " alt="" coords="181,97,327,124"/>
+<area shape="rect" id="node3" href="namespacesigproc.html#a0f913c8f0a4b5106a35ebc4dd01716c6" title="遅延算出 " alt="" coords="189,148,319,175"/>
+<area shape="rect" id="node4" href="namespacesigproc.html#a493674a58654e34d6d9257067736eaac" title="測定信号&#45;参照信号間の遅延補正とデータ長の統一 " alt="" coords="375,148,469,175"/>
+<area shape="rect" id="node5" href="namespacesigproc.html#aef8763cfb8ca09db00092478741501af" title="相関係数算出 " alt="" coords="527,5,672,32"/>
+<area shape="rect" id="node6" href="namespacesigproc.html#aa30d9c73682d13db7c77c22a36da7872" title="平均誤差(ME)算出 " alt="" coords="517,56,681,83"/>
+<area shape="rect" id="node7" href="namespacesigproc.html#a63e03accfdf1c3806cec3cf3c7280e48" title="平均絶対誤差(MAE)算出 " alt="" coords="520,107,679,149"/>
+<area shape="rect" id="node8" href="namespacesigproc.html#a78251de255e7ae3d8e277d74355c4690" title="平均二乗誤差(RSE)算出 " alt="" coords="523,173,675,214"/>
+<area shape="rect" id="node9" href="namespacesigproc.html#a34cbfcd3044b5c08fbac9c11760881f7" title="平均平方二乗誤差(RMSE)算出 " alt="" coords="519,238,679,279"/>
+<area shape="rect" id="node10" href="namespacesigproc.html#aad0e26bf1bbb50a1f9b7e116ff476c66" title="正答率(絶対誤差が閾値以内に収まる割合)算出 " alt="" coords="523,304,675,331"/>
+</map>
+</div>
 
 </div>
 </div>

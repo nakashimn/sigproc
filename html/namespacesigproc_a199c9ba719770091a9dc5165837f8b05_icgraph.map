@@ -1,0 +1,14 @@
+<map id="sigproc.__cast_dataframe" name="sigproc.__cast_dataframe">
+<area shape="rect" id="node2" href="$namespacesigproc.html#a0bd424195448e1a103c56799075dd208" title="区間最頻値算出 " alt="" coords="224,56,404,83"/>
+<area shape="rect" id="node3" href="$namespacesigproc.html#a6491947250bd4503f6c4d75c619ba6ff" title="無効値補間 " alt="" coords="250,107,378,149"/>
+<area shape="rect" id="node6" href="$namespacesigproc.html#a493674a58654e34d6d9257067736eaac" title="測定信号&#45;参照信号間の遅延補正とデータ長の統一 " alt="" coords="645,148,740,175"/>
+<area shape="rect" id="node13" href="$namespacesigproc.html#ace562e5b0ee5533abadbe723f980e91e" title="無効値除外 " alt="" coords="247,224,381,251"/>
+<area shape="rect" id="node4" href="$namespacesigproc.html#a05163f073c4da5c61ffd0a004d367e80" title="相関関数算出 " alt="" coords="452,72,597,99"/>
+<area shape="rect" id="node5" href="$namespacesigproc.html#a0f913c8f0a4b5106a35ebc4dd01716c6" title="遅延算出 " alt="" coords="459,123,590,149"/>
+<area shape="rect" id="node7" href="$namespacesigproc.html#aef8763cfb8ca09db00092478741501af" title="相関係数算出 " alt="" coords="797,5,943,32"/>
+<area shape="rect" id="node8" href="$namespacesigproc.html#aa30d9c73682d13db7c77c22a36da7872" title="平均誤差(ME)算出 " alt="" coords="788,56,952,83"/>
+<area shape="rect" id="node9" href="$namespacesigproc.html#a63e03accfdf1c3806cec3cf3c7280e48" title="平均絶対誤差(MAE)算出 " alt="" coords="791,107,949,149"/>
+<area shape="rect" id="node10" href="$namespacesigproc.html#a78251de255e7ae3d8e277d74355c4690" title="平均二乗誤差(RSE)算出 " alt="" coords="794,173,946,214"/>
+<area shape="rect" id="node11" href="$namespacesigproc.html#a34cbfcd3044b5c08fbac9c11760881f7" title="平均平方二乗誤差(RMSE)算出 " alt="" coords="790,238,950,279"/>
+<area shape="rect" id="node12" href="$namespacesigproc.html#aad0e26bf1bbb50a1f9b7e116ff476c66" title="正答率(絶対誤差が閾値以内に収まる割合)算出 " alt="" coords="794,304,946,331"/>
+</map>

@@ -71,7 +71,7 @@ def __cast_dataframe(input) -> pd.DataFrame:
         return np.nan
 
 
-## @brief 区間平均
+## @brief 区間平均算出
 #  @param input 入力信号
 #  @param window 窓区間幅
 #  @param ofset =0 オフセット
@@ -93,7 +93,7 @@ def calc_section_average(input: np.ndarray,
         return np.nan
 
 
-## @brief 区間標準偏差
+## @brief 区間標準偏差算出
 #  @param input 入力信号
 #  @param window 窓区間幅
 #  @param ofset =0 オフセット
@@ -115,7 +115,7 @@ def calc_section_std_dev(input: np.ndarray,
         return np.nan
 
 
-## @brief 区間最頻値
+## @brief 区間最頻値算出
 #  @param input 入力信号
 #  @param window 窓区間幅
 #  @param ofset =0 オフセット
@@ -362,7 +362,7 @@ def calc_root_mean_sq_error(data_meas: np.ndarray,
         return np.nan
 
 
-## @brief 正答率算出(絶対誤差が閾値以内に収まる割合)
+## @brief 正答率(絶対誤差が閾値以内に収まる割合)算出
 #  @param data_meas 測定信号
 #  @param data_ref 参照信号
 #  @param threshold 閾値

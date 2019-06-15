@@ -1,0 +1,8 @@
+<map id="sigproc.align" name="sigproc.align">
+<area shape="rect" id="node2" href="$namespacesigproc.html#aef8763cfb8ca09db00092478741501af" title="相関係数算出 " alt="" coords="157,5,303,32"/>
+<area shape="rect" id="node3" href="$namespacesigproc.html#aa30d9c73682d13db7c77c22a36da7872" title="平均誤差(ME)算出 " alt="" coords="148,56,312,83"/>
+<area shape="rect" id="node4" href="$namespacesigproc.html#a63e03accfdf1c3806cec3cf3c7280e48" title="平均絶対誤差(MAE)算出 " alt="" coords="151,107,309,149"/>
+<area shape="rect" id="node5" href="$namespacesigproc.html#a78251de255e7ae3d8e277d74355c4690" title="平均二乗誤差(RSE)算出 " alt="" coords="154,173,306,214"/>
+<area shape="rect" id="node6" href="$namespacesigproc.html#a34cbfcd3044b5c08fbac9c11760881f7" title="平均平方二乗誤差(RMSE)算出 " alt="" coords="150,238,310,279"/>
+<area shape="rect" id="node7" href="$namespacesigproc.html#aad0e26bf1bbb50a1f9b7e116ff476c66" title="正答率(絶対誤差が閾値以内に収まる割合)算出 " alt="" coords="154,304,306,331"/>
+</map>
