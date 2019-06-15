@@ -1,21 +1,18 @@
 # -*- coding: utf-8 -*-
 
-## 	@package sigproc.py 信号処理用パッケージ
-#   @brief 信号処理用に作成した関数を簡易的にまとめています。
-#   @author nakashimn
-#   @date 2018.11.27
-#   @version 0.1
+## @package sigproc 信号処理用パッケージ
+#  @brief 信号処理用に作成した関数を簡易的にまとめています。
+#  @author nakashimn
+#  @date 2018.11.27
+#  @version 0.1
 
-import pandas
+import pandas as pd
 import numpy as np
 
-
-def _cast_ndarray(input):
-    """ -----------------------------------------------------------------------
-    ## 型変換(ndarray型)
-    # @param input 入力信号
-    # @return output_nd 出力信号(ndarray型)
-    ----------------------------------------------------------------------- """
+## @brief 型変換(np.ndarray)
+#  @param input 入力信号
+#  @return output_nd 出力信号(np.ndarray)
+def __cast_ndarray(input) -> np.ndarray:
     try:
         if type(input) == int:
             output_nd = np.array(input)
@@ -30,62 +27,60 @@ def _cast_ndarray(input):
             output_nd = np.array(input)
         elif type(input) == np.ndarray:
             output_nd = input.copy()
-        elif type(input) == pandas.core.frame.DataFrame:
+        elif type(input) == pd.core.frame.DataFrame:
             output_nd = input.values.ravel().copy()
-        elif type(input) == pandas.core.series.Series:
+        elif type(input) == pd.core.series.Series:
             output_nd = input.values.ravel().copy()
         else:
             output_nd = np.array(input)
             print("input : data type is wrong.")
         return output_nd
     except Exception as e:
-        print("Error:sigproc._cast_ndarray : {}".format(e.args[0]))
+        print("Error:sigproc.__cast_ndarray : {}".format(e.args[0]))
         return np.nan
 
 
-def _cast_dataframe(input):
-    """ -----------------------------------------------------------------------
-    ## 型変換(DataFrame型)
-    # @param input 入力信号
-    # @return output_df 出力信号(DataFrame型)
-    ----------------------------------------------------------------------- """
+## @brief 型変換(pd.DataFrame)
+#  @param input 入力信号
+#  @return output_df 出力信号(pd.DataFrame)
+def __cast_dataframe(input) -> pd.DataFrame:
     try:
         if type(input) == int:
-            output_df = pandas.DataFrame([input])
+            output_df = pd.DataFrame([input])
             print("input : data type is int.")
         elif type(input) == float:
-            output_df = pandas.DataFrame([input])
+            output_df = pd.DataFrame([input])
             print("input : data type is float.")
         elif type(input) == str:
-            output_df = pandas.DataFrame([input])
+            output_df = pd.DataFrame([input])
             print("input : data type is str.")
         elif type(input) == list:
-            output_df = pandas.DataFrame(input)
+            output_df = pd.DataFrame(input)
         elif type(input) == np.ndarray:
-            output_df = pandas.DataFrame(input.copy())
-        elif type(input) == pandas.core.frame.DataFrame:
-            output_df = pandas.DataFrame(input.values.ravel().copy())
-        elif type(input) == pandas.core.series.Series:
-            output_df = pandas.DataFrame(input.values.ravel().copy())
+            output_df = pd.DataFrame(input.copy())
+        elif type(input) == pd.core.frame.DataFrame:
+            output_df = pd.DataFrame(input.values.ravel().copy())
+        elif type(input) == pd.core.series.Series:
+            output_df = pd.DataFrame(input.values.ravel().copy())
         else:
-            output_df = pandas.DataFrame(input)
+            output_df = pd.DataFrame(input)
             print("input : data type is wrong.")
         return output_df
     except Exception as e:
-        print("Error:sigproc._cast_dataframe : {}".format(e.args[0]))
+        print("Error:sigproc.__cast_dataframe : {}".format(e.args[0]))
         return np.nan
 
 
-def calc_section_average(input, window, ofset=0):
-    """ -----------------------------------------------------------------------
-    ## 区間平均
-    # @param input 入力信号
-    # @param window 窓区間幅
-    # @param ofset =0 オフセット
-    # @return section_average 区間平均(ndarray型)
-    ----------------------------------------------------------------------- """
+## @brief 区間平均
+#  @param input 入力信号
+#  @param window 窓区間幅
+#  @param ofset =0 オフセット
+#  @return section_average 区間平均(np.ndarray)
+def calc_section_average(input: np.ndarray,
+                         window: int,
+                         ofset: int =0) -> np.ndarray:
     try:
-        _signal = _cast_ndarray(input)
+        _signal = __cast_ndarray(input)
         _signal = np.delete(_signal, range(ofset))
         if len(_signal) % window != 0:
             padding = window-len(_signal) % window
@@ -98,16 +93,16 @@ def calc_section_average(input, window, ofset=0):
         return np.nan
 
 
-def calc_section_std_dev(input, window, ofset=0):
-    """ -----------------------------------------------------------------------
-    ## 区間標準偏差
-    # @param input 入力信号
-    # @param window 窓区間幅
-    # @param ofset =0 オフセット
-    # @return section_std_dev 区間標準偏差(ndarray型)
-    ----------------------------------------------------------------------- """
+## @brief 区間標準偏差
+#  @param input 入力信号
+#  @param window 窓区間幅
+#  @param ofset =0 オフセット
+#  @return section_std_dev 区間標準偏差(np.ndarray)
+def calc_section_std_dev(input: np.ndarray,
+                         window: int,
+                         ofset: int =0) -> np.ndarray:
     try:
-        _signal = _cast_ndarray(input)
+        _signal = __cast_ndarray(input)
         _signal = np.delete(_signal, range(ofset))
         if len(_signal) % window != 0:
             padding = window-len(_signal) % window
@@ -120,22 +115,22 @@ def calc_section_std_dev(input, window, ofset=0):
         return np.nan
 
 
-def calc_section_mode(input, window, ofset=0):
-    """ -----------------------------------------------------------------------
-    ## 区間最頻値
-    # @param input 入力信号
-    # @param window 窓区間幅
-    # @param ofset =0 オフセット
-    # @return section_mode 区間最頻値(ndarray型)
-    ----------------------------------------------------------------------- """
+## @brief 区間最頻値
+#  @param input 入力信号
+#  @param window 窓区間幅
+#  @param ofset =0 オフセット
+#  @return section_mode 区間最頻値(np.ndarray)
+def calc_section_mode(input: np.ndarray,
+                      window: int,
+                      ofset: int =0) -> np.ndarray:
     try:
-        _signal = _cast_ndarray(input)
+        _signal = __cast_ndarray(input)
         _signal = np.delete(_signal, range(ofset))
         if len(_signal) % window != 0:
             padding = window-len(_signal) % window
             _signal = np.append(_signal, [np.nan] * padding)
         _signal = _signal.reshape(int(len(_signal)/window), window)
-        _signal_df = _cast_dataframe(_signal)
+        _signal_df = __cast_dataframe(_signal)
         section_mode = _signal_df.mode(axis=1)[0].values
         return section_mode
     except Exception as e:
@@ -143,15 +138,14 @@ def calc_section_mode(input, window, ofset=0):
         return np.nan
 
 
-def interpolate_invalid(input, invalid_values=[]):
-    """ -----------------------------------------------------------------------
-    ## 無効値補間
-    # @param input 入力信号
-    # @param invalid_values 無効値
-    # @return interpolated 無効値補間後信号(ndarray型)
-    ----------------------------------------------------------------------- """
+## @brief 無効値補間
+#  @param input 入力信号
+#  @param invalid_values 無効値
+#  @return interpolated 無効値補間後信号(np.ndarray)
+def interpolate_invalid(input: np.ndarray,
+                        invalid_values: list or int or float =[]) -> np.ndarray:
     try:
-        _signal = _cast_dataframe(input)
+        _signal = __cast_dataframe(input)
         if type(invalid_values) == int or type(invalid_values) == float:
             invalid_values = [invalid_values]
         for invalid_value in invalid_values:
@@ -163,15 +157,14 @@ def interpolate_invalid(input, invalid_values=[]):
         return np.nan
 
 
-def drop_invalid(input, invalid_values=[]):
-    """ -----------------------------------------------------------------------
-    ## 無効値除外
-    # @param input 入力信号
-    # @param invalid_values 無効値
-    # @return invalidated 無効値除外(np.nan)後信号(ndarray型)
-    ----------------------------------------------------------------------- """
+## @brief 無効値除外
+#  @param input 入力信号
+#  @param invalid_values 無効値
+#  @return invalidated 無効値除外(np.nan)後信号(np.ndarray)
+def drop_invalid(input: np.ndarray,
+                 invalid_values: list or int or float =[]) -> np.ndarray:
     try:
-        _signal = _cast_dataframe(input)
+        _signal = __cast_dataframe(input)
         if type(invalid_values) == int or type(invalid_values) == float:
             invalid_values = [invalid_values]
         for invalid_value in invalid_values:
@@ -183,14 +176,14 @@ def drop_invalid(input, invalid_values=[]):
         return np.nan
 
 
-def calc_corrfunc(data_meas, data_ref, invalid_values=[]):
-    """ -----------------------------------------------------------------------
-    ## 相関関数算出
-    # @param data_meas 測定信号
-    # @param data_ref 参照信号
-    # @param invalid_values 無効値
-    # @return corrfunc 相関関数
-    ----------------------------------------------------------------------- """
+## @brief 相関関数算出
+#  @param data_meas 測定信号
+#  @param data_ref 参照信号
+#  @param invalid_values 無効値
+#  @return corrfunc 相関関数
+def calc_corrfunc(data_meas: np.ndarray,
+                  data_ref: np.ndarray,
+                  invalid_values: list or int or float =[]) -> np.ndarray:
     try:
         _data_meas = interpolate_invalid(data_meas, invalid_values)
         _data_ref = interpolate_invalid(data_ref, invalid_values)
@@ -203,16 +196,16 @@ def calc_corrfunc(data_meas, data_ref, invalid_values=[]):
         return np.nan
 
 
-def calc_delay(data_meas, data_ref, invalid_values=[]):
-    """ -----------------------------------------------------------------------
-    ## 遅延算出
-    # @param data_meas 測定信号
-    # @param data_ref 参照信号
-    # @param invalid_values 無効値
-    # @return delay 遅延
-    # @brief _delay>0 : 測定信号のほうが遅い
-    # @brief _delay<0 : 測定信号のほうが早い
-    ----------------------------------------------------------------------- """
+## @brief 遅延算出
+#  @param data_meas 測定信号
+#  @param data_ref 参照信号
+#  @param invalid_values 無効値
+#  @return delay 遅延
+#  @brief _delay>0 : 測定信号のほうが遅い
+#  @brief _delay<0 : 測定信号のほうが早い
+def calc_delay(data_meas: np.ndarray,
+               data_ref: np.ndarray,
+               invalid_values: list or int or float =[]) -> int:
     try:
         _data_meas = interpolate_invalid(data_meas, invalid_values)
         _data_ref = interpolate_invalid(data_ref, invalid_values)
@@ -226,30 +219,31 @@ def calc_delay(data_meas, data_ref, invalid_values=[]):
         return np.nan
 
 
-def align(data_meas, data_ref, invalid_values=[], delay=np.nan):
-    """ -----------------------------------------------------------------------
-    ## 測定信号-参照信号間の遅延補正とデータ長の統一
-    # @param data_meas 測定信号
-    # @param data_ref 参照信号
-    # @param invalid_values 無効値
-    # @param delay 遅延
-    # @return aligned_meas データ長調整後の測定信号(ndarray型)
-    # @return aligned_ref データ長調整後の参照信号(ndarray型)
-    ----------------------------------------------------------------------- """
+## @brief 測定信号-参照信号間の遅延補正とデータ長の統一
+#  @param data_meas 測定信号
+#  @param data_ref 参照信号
+#  @param invalid_values 無効値
+#  @param delay 遅延
+#  @return aligned_meas データ長調整後の測定信号(ndarray型)
+#  @return aligned_ref データ長調整後の参照信号(ndarray型)
+def align(data_meas: np.ndarray,
+          data_ref: np.ndarray,
+          invalid_values: list or int or float =[],
+          delay: int =np.nan) -> (np.ndarray, np.ndarray):
     try:
         if np.isnan(delay):
             _delay = calc_delay(data_meas, data_ref, invalid_values)
         else:
             _delay = delay
-        _data_meas = _cast_dataframe(data_meas)
+        _data_meas = __cast_dataframe(data_meas)
         _data_meas.columns = ["meas"]
-        _data_ref = _cast_dataframe(data_ref)
+        _data_ref = __cast_dataframe(data_ref)
         _data_ref.columns = ["ref"]
         if _delay > 0:
-            _data_meas = pandas.concat([pandas.DataFrame([np.nan]*_delay, columns=["meas"]), _data_meas]).reset_index(drop=True)
+            _data_meas = pd.concat([pd.DataFrame([np.nan]*_delay, columns=["meas"]), _data_meas]).reset_index(drop=True)
         elif _delay < 0:
             _data_meas = _data_meas.drop(range(abs(_delay))).reset_index(drop=True)
-        _data_aligned = pandas.concat([_data_meas["meas"], _data_ref["ref"]], axis=1)
+        _data_aligned = pd.concat([_data_meas["meas"], _data_ref["ref"]], axis=1)
         aligned_meas = _data_aligned["meas"]
         aligned_ref = _data_aligned["ref"]
         return aligned_meas, aligned_ref
@@ -258,17 +252,18 @@ def align(data_meas, data_ref, invalid_values=[], delay=np.nan):
         return np.nan
 
 
-def calc_corrcoef(data_meas, data_ref, invalid_values=[], delay=np.nan):
-    """ -----------------------------------------------------------------------
-    ## 相関係数算出
-    # @param data_meas 測定信号
-    # @param data_ref 参照信号
-    # @param invalid_values 無効値
-    # @param delay 遅延
-    # @return corrcoef 相関係数
-    ----------------------------------------------------------------------- """
+## @brief 相関係数算出
+#  @param data_meas 測定信号
+#  @param data_ref 参照信号
+#  @param invalid_values 無効値
+#  @param delay 遅延
+#  @return corrcoef 相関係数
+def calc_corrcoef(data_meas: np.ndarray,
+                  data_ref: np.ndarray,
+                  invalid_values: list or int or float =[],
+                  delay: int =np.nan) -> float:
     try:
-        _data_aligned = pandas.concat(align(data_meas,
+        _data_aligned = pd.concat(align(data_meas,
                                             data_ref,
                                             invalid_values,
                                             delay), axis=1).dropna()
@@ -279,15 +274,16 @@ def calc_corrcoef(data_meas, data_ref, invalid_values=[], delay=np.nan):
         return np.nan
 
 
-def calc_mean_error(data_meas, data_ref, invalid_values=[], delay=np.nan):
-    """ -----------------------------------------------------------------------
-    ## 平均誤差(ME)算出
-    # @param data_meas 測定信号
-    # @param data_ref 参照信号
-    # @param invalid_values 無効値
-    # @param delay 遅延
-    # @return mean_error 平均誤差
-    ----------------------------------------------------------------------- """
+## @brief 平均誤差(ME)算出
+#  @param data_meas 測定信号
+#  @param data_ref 参照信号
+#  @param invalid_values 無効値
+#  @param delay 遅延
+#  @return mean_error 平均誤差
+def calc_mean_error(data_meas: np.ndarray,
+                    data_ref: np.ndarray,
+                    invalid_values: list or int or float=[],
+                    delay: int =np.nan) -> float:
     try:
         _data_meas, _data_ref = align(data_meas,
                                       data_ref,
@@ -300,15 +296,16 @@ def calc_mean_error(data_meas, data_ref, invalid_values=[], delay=np.nan):
         return np.nan
 
 
-def calc_mean_abs_error(data_meas, data_ref, invalid_values=[], delay=np.nan):
-    """ -----------------------------------------------------------------------
-    ## 平均絶対誤差(MAE)算出
-    # @param data_meas 測定信号
-    # @param data_ref 参照信号
-    # @param invalid_values 無効値
-    # @param delay 遅延
-    # @return mean_abs_error 平均絶対誤差
-    ----------------------------------------------------------------------- """
+## @brief 平均絶対誤差(MAE)算出
+#  @param data_meas 測定信号
+#  @param data_ref 参照信号
+#  @param invalid_values 無効値
+#  @param delay 遅延
+#  @return mean_abs_error 平均絶対誤差
+def calc_mean_abs_error(data_meas: np.ndarray,
+                        data_ref: np.ndarray,
+                        invalid_values: list or int or float =[],
+                        delay: int =np.nan) -> float:
     try:
         _data_meas, _data_ref = align(data_meas,
                                       data_ref,
@@ -321,15 +318,16 @@ def calc_mean_abs_error(data_meas, data_ref, invalid_values=[], delay=np.nan):
         return np.nan
 
 
-def calc_mean_sq_error(data_meas, data_ref, invalid_values=[], delay=np.nan):
-    """ -----------------------------------------------------------------------
-    ## 平均二乗誤差(RSE)算出
-    # @param data_meas 測定信号
-    # @param data_ref 参照信号
-    # @param invalid_values 無効値
-    # @param delay 遅延
-    # @return mean_sq_error 平均二乗誤差
-    ----------------------------------------------------------------------- """
+## @brief 平均二乗誤差(RSE)算出
+#  @param data_meas 測定信号
+#  @param data_ref 参照信号
+#  @param invalid_values 無効値
+#  @param delay 遅延
+#  @return mean_sq_error 平均二乗誤差
+def calc_mean_sq_error(data_meas: np.ndarray,
+                       data_ref: np.ndarray,
+                       invalid_values: list or int or float =[],
+                       delay: int =np.nan) -> float:
     try:
         _data_meas, _data_ref = align(data_meas,
                                       data_ref,
@@ -342,15 +340,16 @@ def calc_mean_sq_error(data_meas, data_ref, invalid_values=[], delay=np.nan):
         return np.nan
 
 
-def calc_root_mean_sq_error(data_meas, data_ref, invalid_values=[], delay=np.nan):
-    """ -----------------------------------------------------------------------
-    ## 平均平方二乗誤差(RMSE)算出
-    # @param data_meas 測定信号
-    # @param data_ref 参照信号
-    # @param invalid_values 無効値
-    # @param delay 遅延
-    # @return root_mean_sq_error 平均平方二乗誤差
-    ----------------------------------------------------------------------- """
+## @brief 平均平方二乗誤差(RMSE)算出
+#  @param data_meas 測定信号
+#  @param data_ref 参照信号
+#  @param invalid_values 無効値
+#  @param delay 遅延
+#  @return root_mean_sq_error 平均平方二乗誤差
+def calc_root_mean_sq_error(data_meas: np.ndarray,
+                            data_ref: np.ndarray,
+                            invalid_values: list or int or float=[],
+                            delay: int =np.nan) -> float:
     try:
         _data_meas, _data_ref = align(data_meas,
                                       data_ref,
@@ -363,21 +362,23 @@ def calc_root_mean_sq_error(data_meas, data_ref, invalid_values=[], delay=np.nan
         return np.nan
 
 
-def calc_accuracy(data_meas, data_ref, threshold, invalid_values=[], delay=np.nan):
-    """ -----------------------------------------------------------------------
-    ## 正答率算出(絶対誤差が閾値以内に収まる割合)
-    # @param data_meas 測定信号
-    # @param data_ref 参照信号
-    # @param threshold 閾値
-    # @param invalid_values 無効値
-    # @param delay 遅延
-    # @return accuracy 正答率
-    ----------------------------------------------------------------------- """
+## @brief 正答率算出(絶対誤差が閾値以内に収まる割合)
+#  @param data_meas 測定信号
+#  @param data_ref 参照信号
+#  @param threshold 閾値
+#  @param invalid_values 無効値
+#  @param delay 遅延
+#  @return accuracy 正答率
+def calc_accuracy(data_meas: np.ndarray,
+                  data_ref: np.ndarray,
+                  threshold: float,
+                  invalid_values: list or int or float =[],
+                  delay: int =np.nan) -> float:
     try:
-        _data_aligned = pandas.concat(align(data_meas,
-                                            data_ref,
-                                            invalid_values,
-                                            delay), axis=1).dropna()
+        _data_aligned = pd.concat(align(data_meas,
+                                        data_ref,
+                                        invalid_values,
+                                        delay), axis=1).dropna()
         _data_abs_error = np.abs(_data_aligned["meas"].values - _data_aligned["ref"].values)
         accuracy = sum(_data_abs_error <= threshold) / len(_data_abs_error)
         return accuracy
