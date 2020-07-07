@@ -7,6 +7,10 @@
 
 import pandas as pd
 import numpy as np
+from logging import getLogger, StreamHandler, DEBUG
+
+logger = getLogger(__name__)
+logger.setLevel(DEBUG)
 
 ##
 #  @brief 型変換(np.ndarray)
@@ -16,13 +20,13 @@ def __cast_ndarray(input) -> np.ndarray:
     try:
         if type(input) == int:
             output_nd = np.array(input)
-            print("input : data type is int.")
+            logger.debug("input : data type is int.")
         elif type(input) == float:
             output_nd = np.array(input)
-            print("input : data type is float.")
+            logger.debug("input : data type is float.")
         elif type(input) == str:
             output_nd = np.array(input)
-            print("input : data type is str.")
+            logger.debug("input : data type is str.")
         elif type(input) == list:
             output_nd = np.array(input)
         elif type(input) == np.ndarray:
@@ -33,10 +37,10 @@ def __cast_ndarray(input) -> np.ndarray:
             output_nd = input.values.ravel().copy()
         else:
             output_nd = np.array(input)
-            print("input : data type is wrong.")
+            logger.debug("input : data type is wrong.")
         return output_nd
     except Exception as e:
-        print("Error:sigproc.__cast_ndarray : {}".format(e.args[0]))
+        logger.error("Error:sigproc.__cast_ndarray : {}".format(e.args[0]))
         return np.nan
 
 
@@ -48,13 +52,13 @@ def __cast_dataframe(input) -> pd.DataFrame:
     try:
         if type(input) == int:
             output_df = pd.DataFrame([input])
-            print("input : data type is int.")
+            logger.debug("input : data type is int.")
         elif type(input) == float:
             output_df = pd.DataFrame([input])
-            print("input : data type is float.")
+            logger.debug("input : data type is float.")
         elif type(input) == str:
             output_df = pd.DataFrame([input])
-            print("input : data type is str.")
+            logger.debug("input : data type is str.")
         elif type(input) == list:
             output_df = pd.DataFrame(input)
         elif type(input) == np.ndarray:
@@ -65,10 +69,10 @@ def __cast_dataframe(input) -> pd.DataFrame:
             output_df = pd.DataFrame(input.values.ravel().copy())
         else:
             output_df = pd.DataFrame(input)
-            print("input : data type is wrong.")
+            logger.warning("input : data type is wrong.")
         return output_df
     except Exception as e:
-        print("Error:sigproc.__cast_dataframe : {}".format(e.args[0]))
+        logger.error("Error:sigproc.__cast_dataframe : {}".format(e.args[0]))
         return np.nan
 
 
@@ -91,7 +95,7 @@ def calc_section_average(input: np.ndarray,
         section_average = np.nanmean(_signal, axis=1)
         return section_average
     except Exception as e:
-        print("Error:sigproc.calc_section_average : {}".format(e.args[0]))
+        logger.error("Error:sigproc.calc_section_average : {}".format(e.args[0]))
         return np.nan
 
 
@@ -114,7 +118,7 @@ def calc_section_std_dev(input: np.ndarray,
         section_std_dev = np.nanstd(_signal, axis=1)
         return section_std_dev
     except Exception as e:
-        print("Error:sigproc.calc_section_std_dev : {}".format(e.args[0]))
+        logger.error("Error:sigproc.calc_section_std_dev : {}".format(e.args[0]))
         return np.nan
 
 
@@ -138,7 +142,7 @@ def calc_section_mode(input: np.ndarray,
         section_mode = _signal_df.mode(axis=1)[0].values
         return section_mode
     except Exception as e:
-        print("Error:sigproc.calc_section_mode : {}".format(e.args[0]))
+        logger.error("Error:sigproc.calc_section_mode : {}".format(e.args[0]))
         return np.nan
 
 
@@ -158,7 +162,7 @@ def interpolate_invalid(input: np.ndarray,
         interpolated = _signal.interpolate(limit_direction="backward").dropna().T.values[0]
         return interpolated
     except Exception as e:
-        print("Error:sigproc.interpolate_invalid : {}".format(e.args[0]))
+        logger.error("Error:sigproc.interpolate_invalid : {}".format(e.args[0]))
         return np.nan
 
 
@@ -178,7 +182,7 @@ def drop_invalid(input: np.ndarray,
         invalidated = _signal
         return invalidated
     except Exception as e:
-        print("Error:sigproc.interpolate_invalid : {}".format(e.args[0]))
+        logger.error("Error:sigproc.interpolate_invalid : {}".format(e.args[0]))
         return np.nan
 
 
@@ -199,7 +203,7 @@ def calc_corrfunc(data_meas: np.ndarray,
                                 "full")
         return corrfunc
     except Exception as e:
-        print("Error:sigproc.calc_coeffunc : {}".format(e.args[0]))
+        logger.error("Error:sigproc.calc_coeffunc : {}".format(e.args[0]))
         return np.nan
 
 
@@ -223,7 +227,7 @@ def calc_delay(data_meas: np.ndarray,
         delay = (len(_data_ref)-1) - _corrfunc.argmax()
         return delay
     except Exception as e:
-        print("Error:sigproc.calc_delay : {}".format(e.args[0]))
+        logger.error("Error:sigproc.calc_delay : {}".format(e.args[0]))
         return np.nan
 
 
@@ -257,7 +261,7 @@ def align(data_meas: np.ndarray,
         aligned_ref = _data_aligned["ref"]
         return aligned_meas, aligned_ref
     except Exception as e:
-        print("Error:sigproc.align : {}".format(e.args[0]))
+        logger.error("Error:sigproc.align : {}".format(e.args[0]))
         return np.nan
 
 
@@ -280,7 +284,7 @@ def calc_corrcoef(data_meas: np.ndarray,
         corrcoef = np.corrcoef(_data_aligned["meas"], _data_aligned["ref"])[0][1]
         return corrcoef
     except Exception as e:
-        print("Error:sigproc.calc_corrcoef : {}".format(e.args[0]))
+        logger.error("Error:sigproc.calc_corrcoef : {}".format(e.args[0]))
         return np.nan
 
 
@@ -303,7 +307,7 @@ def calc_mean_error(data_meas: np.ndarray,
         mean_error = np.nanmean(_data_meas - _data_ref)
         return mean_error
     except Exception as e:
-        print("Error:sigproc.calc_mean_error : {}".format(e.args[0]))
+        logger.error("Error:sigproc.calc_mean_error : {}".format(e.args[0]))
         return np.nan
 
 
@@ -326,7 +330,7 @@ def calc_mean_abs_error(data_meas: np.ndarray,
         mean_abs_error = np.nanmean(abs(_data_meas - _data_ref))
         return mean_abs_error
     except Exception as e:
-        print("Error:sigproc.calc_mean_abs_error : {}".format(e.args[0]))
+        logger.error("Error:sigproc.calc_mean_abs_error : {}".format(e.args[0]))
         return np.nan
 
 
@@ -349,7 +353,7 @@ def calc_mean_sq_error(data_meas: np.ndarray,
         mean_sq_error = np.nanmean((_data_meas - _data_ref)**2)
         return mean_sq_error
     except Exception as e:
-        print("Error:sigproc.calc_mean_sq_error : {}".format(e.args[0]))
+        logger.error("Error:sigproc.calc_mean_sq_error : {}".format(e.args[0]))
         return np.nan
 
 
@@ -372,7 +376,7 @@ def calc_root_mean_sq_error(data_meas: np.ndarray,
         root_mean_sq_error = np.sqrt(np.nanmean((_data_meas - _data_ref)**2))
         return root_mean_sq_error
     except Exception as e:
-        print("Error:sigproc.calc_root_mean_sq_error : {}".format(e.args[0]))
+        logger.error("Error:sigproc.calc_root_mean_sq_error : {}".format(e.args[0]))
         return np.nan
 
 
@@ -398,4 +402,4 @@ def calc_accuracy(data_meas: np.ndarray,
         accuracy = sum(_data_abs_error <= threshold) / len(_data_abs_error)
         return accuracy
     except Exception as e:
-        print("Error:sigproc.calc_accuracy : {}".format(e.args[0]))
+        logger.error("Error:sigproc.calc_accuracy : {}".format(e.args[0]))
