@@ -1,6 +1,5 @@
-# -*- coding: utf-8 -*-
-
-## @package sigproc 信号処理用パッケージ
+##
+#  @package sigproc 信号処理用パッケージ
 #  @brief 信号処理用に作成した関数を簡易的にまとめています。
 #  @author nakashimn
 #  @date 2018.11.27
@@ -9,7 +8,8 @@
 import pandas as pd
 import numpy as np
 
-## @brief 型変換(np.ndarray)
+##
+#  @brief 型変換(np.ndarray)
 #  @param input 入力信号
 #  @return output_nd 出力信号(np.ndarray)
 def __cast_ndarray(input) -> np.ndarray:
@@ -40,7 +40,8 @@ def __cast_ndarray(input) -> np.ndarray:
         return np.nan
 
 
-## @brief 型変換(pd.DataFrame)
+##
+#  @brief 型変換(pd.DataFrame)
 #  @param input 入力信号
 #  @return output_df 出力信号(pd.DataFrame)
 def __cast_dataframe(input) -> pd.DataFrame:
@@ -71,7 +72,8 @@ def __cast_dataframe(input) -> pd.DataFrame:
         return np.nan
 
 
-## @brief 区間平均算出
+##
+#  @brief 区間平均算出
 #  @param input 入力信号
 #  @param window 窓区間幅
 #  @param ofset =0 オフセット
@@ -93,7 +95,8 @@ def calc_section_average(input: np.ndarray,
         return np.nan
 
 
-## @brief 区間標準偏差算出
+##
+#  @brief 区間標準偏差算出
 #  @param input 入力信号
 #  @param window 窓区間幅
 #  @param ofset =0 オフセット
@@ -115,7 +118,8 @@ def calc_section_std_dev(input: np.ndarray,
         return np.nan
 
 
-## @brief 区間最頻値算出
+##
+#  @brief 区間最頻値算出
 #  @param input 入力信号
 #  @param window 窓区間幅
 #  @param ofset =0 オフセット
@@ -138,7 +142,8 @@ def calc_section_mode(input: np.ndarray,
         return np.nan
 
 
-## @brief 無効値補間
+##
+#  @brief 無効値補間
 #  @param input 入力信号
 #  @param invalid_values 無効値
 #  @return interpolated 無効値補間後信号(np.ndarray)
@@ -157,7 +162,8 @@ def interpolate_invalid(input: np.ndarray,
         return np.nan
 
 
-## @brief 無効値除外
+##
+#  @brief 無効値除外
 #  @param input 入力信号
 #  @param invalid_values 無効値
 #  @return invalidated 無効値除外(np.nan)後信号(np.ndarray)
@@ -176,7 +182,8 @@ def drop_invalid(input: np.ndarray,
         return np.nan
 
 
-## @brief 相関関数算出
+##
+#  @brief 相関関数算出
 #  @param data_meas 測定信号
 #  @param data_ref 参照信号
 #  @param invalid_values 無効値
@@ -196,7 +203,8 @@ def calc_corrfunc(data_meas: np.ndarray,
         return np.nan
 
 
-## @brief 遅延算出
+##
+#  @brief 遅延算出
 #  @param data_meas 測定信号
 #  @param data_ref 参照信号
 #  @param invalid_values 無効値
@@ -219,7 +227,8 @@ def calc_delay(data_meas: np.ndarray,
         return np.nan
 
 
-## @brief 測定信号-参照信号間の遅延補正とデータ長の統一
+##
+#  @brief 測定信号-参照信号間の遅延補正とデータ長の統一
 #  @param data_meas 測定信号
 #  @param data_ref 参照信号
 #  @param invalid_values 無効値
@@ -252,7 +261,8 @@ def align(data_meas: np.ndarray,
         return np.nan
 
 
-## @brief 相関係数算出
+##
+#  @brief 相関係数算出
 #  @param data_meas 測定信号
 #  @param data_ref 参照信号
 #  @param invalid_values 無効値
@@ -274,7 +284,8 @@ def calc_corrcoef(data_meas: np.ndarray,
         return np.nan
 
 
-## @brief 平均誤差(ME)算出
+##
+#  @brief 平均誤差(ME)算出
 #  @param data_meas 測定信号
 #  @param data_ref 参照信号
 #  @param invalid_values 無効値
@@ -296,7 +307,8 @@ def calc_mean_error(data_meas: np.ndarray,
         return np.nan
 
 
-## @brief 平均絶対誤差(MAE)算出
+##
+#  @brief 平均絶対誤差(MAE)算出
 #  @param data_meas 測定信号
 #  @param data_ref 参照信号
 #  @param invalid_values 無効値
@@ -318,7 +330,8 @@ def calc_mean_abs_error(data_meas: np.ndarray,
         return np.nan
 
 
-## @brief 平均二乗誤差(RSE)算出
+##
+#  @brief 平均二乗誤差(RSE)算出
 #  @param data_meas 測定信号
 #  @param data_ref 参照信号
 #  @param invalid_values 無効値
@@ -340,7 +353,8 @@ def calc_mean_sq_error(data_meas: np.ndarray,
         return np.nan
 
 
-## @brief 平均平方二乗誤差(RMSE)算出
+##
+#  @brief 平均平方二乗誤差(RMSE)算出
 #  @param data_meas 測定信号
 #  @param data_ref 参照信号
 #  @param invalid_values 無効値
@@ -362,7 +376,8 @@ def calc_root_mean_sq_error(data_meas: np.ndarray,
         return np.nan
 
 
-## @brief 正答率(絶対誤差が閾値以内に収まる割合)算出
+##
+#  @brief 正答率(絶対誤差が閾値以内に収まる割合)算出
 #  @param data_meas 測定信号
 #  @param data_ref 参照信号
 #  @param threshold 閾値
